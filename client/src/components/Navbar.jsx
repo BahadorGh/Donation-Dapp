@@ -14,7 +14,7 @@ const Navbar = () => {
   const { connect, address } = useStateContext();
 
   const handleUserAccount = () => {
-    <ConnectWallet /> 
+    return <ConnectWallet /> 
   }
 
   return (
