@@ -34,8 +34,8 @@ const Sidebar = () => {
             </div>
     <div className="overflow-y-auto overflow-x-hidden flex-grow mt-10">
       <ul className="flex flex-col py-4 space-y-1">
-         {navlinks.map((link) => (
-            <li>
+         {navlinks.map((link, index) => (
+            <li key={index}>
             <Icon
                 key={link.id}
                 {...link}
