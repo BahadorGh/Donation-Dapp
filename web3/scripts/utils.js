@@ -11,7 +11,6 @@ async function waitForTargetBlock(confirmations) {
 
     const targetBlockNumber = currentBlockNumber + WAIT_BLOCK_CONFIRMATIONS;
 
-
     return new Promise((resolve, reject) => {
     provider.on("block", (blockNumber) => {
         console.log(`Waiting to get target block(${WAIT_BLOCK_CONFIRMATIONS} blocks wait):`, blockNumber);
@@ -20,6 +19,7 @@ async function waitForTargetBlock(confirmations) {
             provider.off("block");
             resolve(blockNumber);
         }
+        reject("Error in getting block number");
         })
     })
 }

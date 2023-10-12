@@ -10,7 +10,7 @@ Front-end parts are located in `client` folder.
 # Starting the frontend:
 
 Take steps as below:
-- 0) deploy core smart contract ( `CrowdFunding.sol` file) from `web3` folder on your desire network(default is Sepoplia). Explanation is located at `web3` folder.
+- 0) deploy core smart contract ( `CrowdFunding.sol` file) from `web3` folder on your desire network(default is Sepolia). Explanation is located at `web3` folder.
 - 1) `cd client`
 - 2) `npm install`
 - 3) to start the frontend: `yarn dev`
