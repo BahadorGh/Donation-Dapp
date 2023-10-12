@@ -2,6 +2,16 @@
 
 This Decentralized application (DAPP) demonstrates an application for people to get donations for their projects or humanity use cases.
 
+# Main functionalities of the project
+- Creating fundraising campaigns
+- Updating fundraising campaigns
+- Donating to campaigns
+- deleting campaigns
+- withdrawing funds
+- refunding funds(in case of emergency and campaign deleting)
+
+##
+
 Back-end parts (`solidity`) are located in `web3` folder.
 Front-end parts are located in `client` folder.
 
