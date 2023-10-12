@@ -185,6 +185,7 @@ contract CrowdFunding is Ownable {
     function donateToCampaign(uint256 _id) external payable notInEmergency {
         if(msg.value == 0 wei) revert LowEtherAmount({minAmount: 1 wei, payedAmount: msg.value});
         Campaign storage campaign = campaigns[_id];
+        if(campaigns[_id].payedOut == true) revert("Funds withdrawed before");
         require(campaign.owner > address(0), "No campaign exist with this ID");
         if(campaign.deadline < block.timestamp) {
             revert DeadLine(
