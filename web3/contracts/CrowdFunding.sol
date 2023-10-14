@@ -332,10 +332,13 @@ contract CrowdFunding is Ownable {
     /// @notice Making refund to donators of a specific campaign
     /// @param _id campgin id
     function _refundDonators(uint _id) internal {
-        Campaign storage campaign = campaigns[_id]; 
+        uint256 donationAmount;
+        Campaign storage campaign = campaigns[_id];
         for(uint i; i < campaign.donators.length; i++) {
-            _payTo(campaign.donators[i], campaign.donations[i]);
+            donationAmount = campaign.donations[i];
             campaign.donations[i] = 0;
+            _payTo(campaign.donators[i], donationAmount);
+            // campaign.donations[i] = 0;
         }
         campaign.amountCollected = 0;
     }
@@ -346,13 +349,16 @@ contract CrowdFunding is Ownable {
     function _refundDonators(uint256 _idFrom, uint256 _idTo) internal {
         require(_idFrom < _idTo, "Invalid id range");
         require(campaigns[_idTo].owner > address(0), "No campaign exist with this ID");
+        uint256 donationAmount;
         for(uint i = _idFrom; i < _idTo; i++) {
         Campaign storage campaign = campaigns[i]; 
         uint256 campaignDonators = campaign.donators.length;
             if(campaignDonators > 0) {
                 for(uint j = 0; j < campaignDonators; j++) {
-                    _payTo(campaign.donators[j], campaign.donations[j]);
+                    donationAmount = campaign.donations[j];
                     campaign.donations[j] = 0;
+                    _payTo(campaign.donators[j], donationAmount);
+                    // campaign.donations[j] = 0;
                 }
                     campaign.amountCollected = 0;
             }
